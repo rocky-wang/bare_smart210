@@ -16,6 +16,7 @@ SUBDIR_TOOLS	:= ./tools
 
 #Define OBJS for TARGET
 OBJS	:= start.o
+OBJS	+= smart210.o led_leaf.o
 
 #Define COMPILER Flags
 CFLAGS	+= -Wall -O2
@@ -45,7 +46,7 @@ $(SUBDIR_TOOLS):
 $(TARGET):$(ELF_FILE) $(SUBDIR_TOOLS)
 	$(OBJCOPY) -O binary $< $@.TMP
 	$(TOOLS_HEADER) $@.TMP $@
-
+	@cp -f $@ /mnt/hgfs/vmshare/$@
 $(ELF_FILE):$(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
 

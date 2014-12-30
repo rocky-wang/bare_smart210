@@ -10,4 +10,6 @@
 *.bin
 *.TMP
 *.elf
+mkmini210
 
+pro/*
