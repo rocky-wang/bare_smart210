@@ -22,6 +22,8 @@ OBJS	+= smart210.o led_leaf.o
 CFLAGS	+= -Wall -O2
 CFLAGS	+= -I./inc
 
+#CFLAGS += -DCONFIG_SYS_ICACHE_OFF
+
 #Define LINKER Flags
 LDFLAGS	+= -Tmap.lds
 ifeq ($(ENV),SD)

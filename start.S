@@ -33,6 +33,15 @@ reset:
 	LDR     R0,=0x0
 	STR     R0,[R1]
 
+    /*
+        * Disable L1 Cache  --- V0.2
+       */
+#ifdef CONFIG_SYS_ICACHE_OFF
+    mrc	    p15, 0, r0, c1, c0, 0
+    bic 	r0, r0, #0x00001000
+    mcr	    p15, 0, r0, c1, c0, 0
+#endif
+    
 	/*
 	 * Setup SYS-Clock
 	 * but we use IROM Configuration for test LED --- version 0.1
