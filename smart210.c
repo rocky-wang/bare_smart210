@@ -1,5 +1,6 @@
-#include <cpu_base.h>
-#include <led_leaf.h>
+#include "cpu_base.h"
+#include "led_leaf.h"
+#include "uart.h"
 
 /*
  *Delay fixed count
@@ -23,7 +24,9 @@ void mini_delay()
 int main_loop()
 {
     led_init();
+    s5p_uart_init();
 
+    puts("====SMART210====\n");
     while(1){
         led_light(LED1);
         mini_delay();

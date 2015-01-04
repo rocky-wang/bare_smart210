@@ -12,4 +12,5 @@
 *.elf
 mkmini210
 
+tools/mk210header
 pro/*

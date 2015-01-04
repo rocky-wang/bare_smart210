@@ -17,17 +17,18 @@ SUBDIR_TOOLS	:= ./tools
 #Define OBJS for TARGET
 OBJS	:= start.o
 OBJS	+= smart210.o led_leaf.o
+OBJS	+= uart.o lowlevel.o
 
 #Define COMPILER Flags
 CFLAGS	+= -Wall -O2
-CFLAGS	+= -I./inc
+CFLAGS	+= -fno-builtin -nostdinc -I./inc
 
 #CFLAGS += -DCONFIG_SYS_ICACHE_OFF
 
 #Define LINKER Flags
 LDFLAGS	+= -Tmap.lds
 ifeq ($(ENV),SD)
-LDFLAGS += -Ttext=0xD0020000
+LDFLAGS += -Ttext=0xD0020010
 else
 LDFLAGS += -Ttext=0x20000000
 endif

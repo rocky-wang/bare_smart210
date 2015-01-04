@@ -7,6 +7,8 @@
 
 .global _start
 .global main_loop
+.global asm_uart_init
+
 _start:
 	b	reset
     ldr pc, _undefined_instruction
@@ -29,10 +31,11 @@ reset:
 	/* 
 	 * Disable Watchdog 
 	*/
+#ifdef CONFIG_WATCHDOG_DISABLE
 	LDR     R1,=S5PV210_WATCHDOG_BASE
 	LDR     R0,=0x0
 	STR     R0,[R1]
-
+#endif
     /*
         * Disable L1 Cache  --- V0.2
        */
@@ -47,7 +50,10 @@ reset:
 	 * but we use IROM Configuration for test LED --- version 0.1
 	*/
 	bl      asm_clock_init
-
+    /*
+        * Uart Asm init,inital the GPIO setup
+        */
+    bl      asm_uart_init
 	/*
 	 * LED Blink Test
 	 * not set sp stack value,use IROM default value --- version 0.1
