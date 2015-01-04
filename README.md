@@ -11,4 +11,6 @@ Version0.2:
 	实验系统指令cache打开后的效果，同时改变delay函数为C语言内嵌汇编的方式。
 Version0.3:
 	使用内置时序配置UART最简模型，非FIFO，非中断的轮询模式，实现输出功能puts。
+Version0.4:
+	增加printf函数功能，支持除法与求余功能，但不显示64bit的空间。
 

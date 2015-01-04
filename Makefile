@@ -18,10 +18,14 @@ SUBDIR_TOOLS	:= ./tools
 OBJS	:= start.o
 OBJS	+= smart210.o led_leaf.o
 OBJS	+= uart.o lowlevel.o
+OBJS	+= printf.o ctype.o
+OBJS	+= _udivsi3.o _umodsi3.o
 
 #Define COMPILER Flags
 CFLAGS	+= -Wall -O2
 CFLAGS	+= -fno-builtin -nostdinc -I./inc
+CFLAGS	+= -mabi=aapcs-linux 
+CFLAGS	+= -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include
 
 #CFLAGS += -DCONFIG_SYS_ICACHE_OFF
 

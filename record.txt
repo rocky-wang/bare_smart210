@@ -13,5 +13,6 @@ Version 0.2:
 Version 0.3:
 	UART控制主要考虑2个步骤，一个是IO口功能选择，一个是UART控制器涉及的寄存器。对于Samsung公司的UART功能，
 	并没有使用标准UART协议寄存器命名规范，不过思路是一样的，配置ULCON、UCON、波特率产生系数UBRDIV、UBRSLOT。
-
+Version 0.4:
+	增加printf功能，主要通过uboot的开源软件的相关源码进行移植。一般来说，较新的uboot移植后编译文件会变大一些。
 
