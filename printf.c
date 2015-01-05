@@ -2,8 +2,8 @@
 #include "ctype.h"
 #include "uart.h"
 
+#ifdef __DEBUG__
 typedef unsigned int size_t;
-
 /* we use this so that we can do without the ctype library */
 #define is_digit(c)	((c) >= '0' && (c) <= '9')
 static int skip_atoi(const char **s)
@@ -296,5 +296,5 @@ void printf (const char *fmt, ...)
 	/* Print the string */
 	puts(printbuffer);
 }
-
+#endif
 

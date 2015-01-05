@@ -1,7 +1,8 @@
 #include "cpu_base.h"
 #include "led_leaf.h"
 #include "uart.h"
-#include "printf.h"
+#include "debug.h"
+#include "clock.h"
 
 /*
  *Delay fixed count
@@ -24,12 +25,12 @@ void mini_delay()
 
 int main_loop()
 {
-    int i = 0x123abc;
     led_init();
     s5p_uart_init();
-
-    puts("====SMART210====\n");
-    printf("the i value is %x,the address is %p\n",i,&i);
+    INFO("the armclock is %d\n",get_arm_clk());   
+    INFO("the uart pclk is %d\n",get_uart_clk(0));
+    show_uart_regs();
+    
     while(1){
         led_light(LED1);
         mini_delay();
