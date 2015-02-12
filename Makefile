@@ -21,6 +21,7 @@ OBJS	+= uart.o lowlevel.o
 OBJS	+= printf.o ctype.o
 OBJS	+= _udivsi3.o _umodsi3.o
 OBJS	+= clock.o
+OBJS	+= s5p_nand.o
 
 #Define COMPILER Flags
 CFLAGS	+= -Wall -O2
@@ -38,7 +39,7 @@ LDFLAGS	+= -Tmap.lds
 ifeq ($(ENV),SD)
 LDFLAGS += -Ttext=0xD0020010
 else
-LDFLAGS += -Ttext=0x20000000
+LDFLAGS += -Ttext=0x20008010
 endif
 
 #Define CROSS_COMPILER etc. info
@@ -58,6 +59,7 @@ $(TARGET):$(ELF_FILE) $(SUBDIR_TOOLS)
 	$(OBJCOPY) -O binary $< $@.TMP
 	$(TOOLS_HEADER) $@.TMP $@
 	@cp -f $@ /mnt/hgfs/vmshare/$@
+	@cp -f $@ /home/rocky/tftpboot/abc.bin
 $(ELF_FILE):$(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
 

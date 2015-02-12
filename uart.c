@@ -36,15 +36,6 @@ void serial_setbrg_dev(const unsigned long rate)
 	writew(udivslot[val % 16], &uart->rest.slot);
 }
 
-void show_uart_regs()
-{
-    struct s5p_uart *const uart = (struct s5p_uart *)S5PV210_UART_BASE;
-
-    INFO("The div reg is %x\n",readl(&uart->ubrdiv));
-    INFO("The slot reg is %x\n",readw(&uart->rest.slot));
-}
-
-
 void s5p_uart_init()
 {
     struct s5p_uart *uart_base = (struct s5p_uart *)S5PV210_UART_BASE;

@@ -3,6 +3,7 @@
 #include "uart.h"
 #include "debug.h"
 #include "clock.h"
+#include "s5p_nand.h"
 
 /*
  *Delay fixed count
@@ -23,13 +24,32 @@ void mini_delay()
     //while(loop--);
 }
 
+void nand_operation_test()
+{
+    char buf[1024];
+    int ret;
+    
+    erase_flash(0x700000);
+
+    nand_write("1234567890",0x700000,10);
+
+    ret = nand_read(buf,0x600000,8);
+    if(ret < 0){
+        return ;
+    }
+    buf[ret] = 0;
+    INFO("the nand read buf is %s\n",buf);
+}
+
 int main_loop()
 {
     led_init();
     s5p_uart_init();
-    INFO("the armclock is %d\n",get_arm_clk());   
-    INFO("the uart pclk is %d\n",get_uart_clk(0));
-    show_uart_regs();
+    nand_lowlevel_init();
+    INFO("the armclock is %d\n",get_arm_clk());
+    nand_init_chip();
+
+    //nand_operation_test();
     
     while(1){
         led_light(LED1);

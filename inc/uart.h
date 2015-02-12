@@ -28,7 +28,5 @@ struct s5p_uart {
 
 extern void s5p_uart_init();
 extern void puts(const char *str);
-extern void show_uart_regs();
-
 
 #endif

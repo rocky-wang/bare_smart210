@@ -49,8 +49,6 @@ struct s5pv210_clock {
 	unsigned int	gate_sclk1;
 };
 
-#define S5PV210_CLOCK_BASE  0xE0100000
-
 extern unsigned long get_arm_clk(void);
 extern unsigned long get_uart_clk(int dev_index);
 

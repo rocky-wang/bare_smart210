@@ -25,7 +25,6 @@ int main(int argc,char **argv)
     unsigned int rw_len = 0;
     unsigned int count;
     
-    
     if(argc != 3){
         fprintf(stderr,"Please Use mk210header <source file> <destination file>\n");
         return -1;

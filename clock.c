@@ -62,7 +62,6 @@ unsigned long get_pll_clk(int pllreg)
     return s5pv210_get_pll_clk(pllreg);
 }
 
-
 /* s5pv210: return ARM clock frequency */
 static unsigned long s5pv210_get_arm_clk(void)
 {
@@ -101,7 +100,6 @@ static unsigned long get_hclk(void)
 
 	return hclkd0;
 }
-
 
 static unsigned long get_hclk_sys(int dom)
 {
@@ -154,7 +152,6 @@ static unsigned long get_pclk_sys(int dom)
 	return pclk;
 }
 
-
 static unsigned long s5pv210_get_pclk(void)
 {
 	return get_pclk_sys(CLK_P);
@@ -169,5 +166,4 @@ unsigned long get_uart_clk(int dev_index)
 {
 	return s5pv210_get_uart_clk(dev_index);
 }
-
 
